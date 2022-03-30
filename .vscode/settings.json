@@ -1,0 +1,13 @@
+{
+	"editor.formatOnSave": true,
+	"spellright.language": ["fr", "en"],
+	"spellright.documentTypes": ["yaml", "git-commit", "markdown"],
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.tabSize": 2,
+	"files.exclude": {
+		"**/node_modules": true
+	},
+	"eslint.enable": true,
+	"C_Cpp.errorSquiggles": "Enabled",
+	"appService.defaultWebAppToDeploy": "None"
+}

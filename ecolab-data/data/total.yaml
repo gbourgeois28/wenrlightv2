@@ -1,0 +1,17 @@
+bilan:
+  titre: Votre bilan climat
+  exposé: oui
+  description: |
+    Voici une estimation de votre empreinte climat à l'année. Elle évolue en fonction de vos réponses.
+    C'est votre part des émissions de gaz à effet de serre, donc du réchauffement climatique. 
+    Toute l'empreinte des entreprises WeNR y est intégrée. 
+
+  formule: 
+    somme: 
+      - numérique
+  références: 
+    - https://avenirclimatique.org/action/
+    - https://www.statistiques.developpement-durable.gouv.fr/chiffres-cles-du-climat-france-europe-et-monde-edition-2020-0
+
+
+

@@ -1,0 +1,161 @@
+alimentation . réduire viande:
+
+alimentation . réduire viande . par deux:
+  applicable si: nombre de plats viande > 0
+  titre: Manger de la viande uniquement le midi
+  formule: par semaine * 52
+  icônes: 🍖📉
+  description: |
+    > ... ou le soir
+
+    Il est tout à fait possible de réduire significativement l'empreinte de son alimentation, sans devenir strictement végétarien.
+
+    Sur ce geste, on remplace la moitié de vos repas avec viande par des repas végétarien. 
+
+  effort : modéré
+alimentation . réduire viande . par deux . par semaine:
+  formule: plats - nouveau régime
+alimentation . réduire viande . par deux . par semaine . nouveau régime:
+  formule: 
+    somme: 
+      - plats . viande 1 / 2
+      - plats . viande 2 / 2
+      - plats . végétalien
+      - plats . végétarien
+      - compensation végétarienne
+
+
+alimentation . réduire viande . par deux . par semaine . nouveau régime . compensation végétarienne:
+  formule: plats . végétarien . empreinte * (nombre de plats viande / 2)
+  description: On compense la division par 2 des plats de viande par des plats végétariens.
+
+alimentation . réduire viande . par quatre:
+  #applicable si: nombre de plats viande > 10
+  titre: Manger de la viande uniquement le week-end
+  formule: par semaine * 52
+  icônes: 🍖📉
+  description: |
+    Il est tout à fait possible de réduire significativement l'empreinte de son alimentation, sans devenir strictement végétarien.
+
+    Sur ce geste, on remplace les 3/4 de vos repas carnés par des repas végétariens, ce qui est une bonne approximation d'une consommation de viande réservée aux week-ends.
+
+  effort : conséquent
+alimentation . réduire viande . par quatre . par semaine:
+  formule: plats - nouveau régime
+alimentation . réduire viande . par quatre . par semaine . nouveau régime:
+  formule: 
+    somme: 
+      - plats . viande 1 / 4
+      - plats . viande 2 / 4
+      - plats . végétalien
+      - plats . végétarien
+      - compensation végétarienne
+
+alimentation . réduire viande . par quatre . par semaine . nouveau régime . compensation végétarienne:
+  formule: plats . végétarien . empreinte * (nombre de plats viande * (3 / 4))
+  description: On compense la division par 4 des plats de viande par des plats végétariens.
+
+alimentation . devenir végétarien:
+  applicable si: nombre de plats viande > 0
+  formule: par semaine * 52
+  icônes: 🥗🧀
+  description: |
+    Adopter un régime végétarien, donc sans viande ni poisson (mais avec des oeufs, du lait, du fromage, des yaourts).
+
+    Moins fort que le régime végétalien, il permet déjà une réduction très importante de l'empreinte sur le climat.
+  effort : conséquent
+alimentation . devenir végétarien . par semaine:
+  titre: Différence par semaine
+  formule: plats - une semaine végétarienne
+
+alimentation . une semaine végétarienne:
+  formule: 14 * plats . végétarien . empreinte
+
+
+alimentation . devenir végétalien:
+  applicable si: plats . végétarien . nombre > 0
+  formule: par semaine * 52
+  icônes: 🥗🌾
+  description: Adopter un régime végétalien, donc sans produits animaux.
+
+alimentation . devenir végétalien . par semaine:
+  titre: Différence par semaine
+  formule: plats - une semaine végétalien
+
+alimentation . une semaine végétalien:
+  formule: 14 * plats . végétalien . empreinte
+
+alimentation . viande faible empreinte:
+  applicable si: plats . viande 2 . nombre > 0  
+  titre: Privilégier la volaille ou le porc
+  formule: par semaine * 52
+  icônes: 🥩🍗
+  description: |
+    L’empreinte climat de notre alimentation est directement corrélée à notre consommation de viande mais il faut savoir que toutes ne sont pas égales de ce point de vu. 
+
+    > À titre de comparaison et ramené au kilo une entrecôte émet 6 fois plus de gaz à effet de serre que des filets de poulets.
+    
+    Pour en savoir plus sur les impacts de notre consommation de viande, n'hésitez pas à consultez l'[explication complète](/actions/plus/alimentation/réduire-viande/par-deux).
+  effort : faible
+
+alimentation . viande faible empreinte . par semaine:
+  formule: plats - nouveau régime
+
+alimentation . viande faible empreinte . par semaine . nouveau régime:
+  formule:
+    somme: 
+      - plats . viande 1 
+      - plats . végétalien
+      - plats . végétarien
+      - compensation viande 1
+
+alimentation . viande faible empreinte . par semaine . nouveau régime . compensation viande 1:
+  formule: plats . viande 1 . empreinte * (plats . viande 2 . nombre)
+  description: On compense la suppression des plat viande 2 en plat viande 1.
+
+
+alimentation . gaspillage alimentaire:
+  inactive: oui
+  icônes: 🍲🚯
+  titre: Réduire mon gaspillage alimentaire
+  note: Dans le document en référence, page 7 pour l'empreinte du gaspillage et page 36 pour la réduction moyenne.
+  références: 
+    - https://www.ademe.fr/operation-foyers-temoins-estimer-impacts-gaspillage-alimentaire-menages
+
+
+alimentation . déchets . action: 
+  titre: Passer au zéro déchet
+  icônes: 📦🚯
+  inactive: oui
+  
+alimentation . boisson . eau en bouteille . arrêter:
+  applicable si: affirmatif
+  titre: Arrêter l'eau en bouteille
+  formule: consommation annuelle * empreinte    
+  icônes: ➡️🚰
+  description: |
+    L'eau en bouteille a un impact environnemental 450 fois supérieur à l'eau du robinet. Elle coute entre 100 et 300 fois plus cher (80 % du prix est issu de
+    la production de l'emballage) et participe fortement à la pollution plastique des océans. 
+    
+    > En effet, il est fréquent que nos déchets plastiques soient 
+    vendus à d’autres pays. Ainsi en 2016, pas moins de 50 % des déchets plastiques triés européens ont été exportés vers la Chine. 
+    
+    Plus d'informations sur la 
+    gestion des déchets plastiques dans les [explication complètes](https://nosgestesclimat.fr/actions/plus/alimentation/d%C3%A9chets/vrac)
+
+    Sources : [Écobilan de l’eau potable](http://esu-services.ch/fileadmin/download/jungbluth-2015-ecobilan-eau.pdf) et [Ministère de la Transition Ecologique p106](https://www.economie.gouv.fr/files/files/directions_services/cge/filieres-dechets-recyclage.pdf)
+    
+alimentation . déchets . composter:
+  titre: Composter
+  icônes: 🐛🌱
+  inactive: oui
+
+alimentation . déchets . recyclage:
+  titre: Recycler mes déchets
+  icônes: 🗑️♻️
+  inactive: oui
+
+alimentation . déchets . vrac:
+  titre: Acheter en vrac
+  icônes: ⚖️🌾
+  inactive: oui

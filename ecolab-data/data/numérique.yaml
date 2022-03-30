@@ -1,0 +1,1021 @@
+numérique:
+  abbréviation: num.
+  description: |
+    Le numérique est au coeur de l'actualité environnementale. 
+    Pourtant, son empreinte n'est pas forcément celle qu'on croit : par exemple, les multiples appareils de nos maisons sont étonnemment importants.
+  couleur: '#B53471'
+  icônes: 💻
+
+  formule:
+    somme:
+      - (organisation)
+      - ((C) / (Colabo))
+      - ((S * Colabo) / (Colabo))
+      - ((NED * equipement DC) / Colabo)
+      - ((NV * 80) / 8500)
+      - ((NI * Imprimantes) / Colabo)
+      - ((NT * 159) / 8500)
+      - ((NS * Smartphones) / Colabo)
+      - ((NAU * Autres équipements) / Colabo)
+      - ((NL * Laptops) / Colabo)
+      - ((NE * Ecrans) / Colabo)
+      - ((ND * Desktops) / Colabo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numérique . Colabo . impact:
+  question: Veuillez indiquer le nombre de collaborateurs de votre organisation ?
+  unité: collaborateurs
+  par défaut: numérique . NA
+numérique . Colabo:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre collaborateurs
+
+
+
+numérique . organisation . type:
+  icônes: 🤙📱
+  question: Veuillez indiquer le type de votre organisation ?
+  description: 
+    Une entreprise est dite GE ou Grande Entreprise quand elle dispose de plus de 5000 salariés.
+    Selon l’Union Européenne, une PME est un établissement constitué d’un effectif de salariés allant de 50 à 250 personnes.
+    En se référant à la définition de l’Union Européenne, les principaux critères d’une TPE sont un effectif de moins de 10 personnes ainsi qu’un chiffre d’affaires en dessous de 2 millions d’euros.
+    Pour être classée dans la catégorie des ETI ou Entreprise de Taille Intermédiaire, l’effectif des salariés ne doit pas aller au-delà de 5 000 personnes. 
+  
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - TPE inférieur à 10 personnes
+        - PME inférieur à 250 personnes
+        - ETI inférieur à 5000 personnes
+        - Grande Entreprise
+        - Secteur Public ou Association
+  par défaut: "'PME inférieur à 250 personnes'"
+  
+  
+numérique . organisation . type . TPE inférieur à 10 personnes:
+numérique . organisation . type . PME inférieur à 250 personnes:
+numérique . organisation . type . ETI inférieur à 5000 personnes:
+numérique . organisation . type . Grande Entreprise:
+numérique . organisation . type . Secteur Public ou Association:
+
+numérique . organisation . impact:
+  icônes: 📱✨
+  exposé: oui
+  unité: kgCO₂e
+  références:
+    - https://www.bilans-ges.ademe.fr/fr/basecarbone/donnees-consulter/liste-element?recherche=Smartphone
+    - https://www.bilans-ges.ademe.fr/fr/accueil/documentation-gene/index/page/produits_informatiques__electr
+    - https://www.apple.com/environment/pdf/products/iphone/iPhone_11_PER_sept2019.pdf
+  description: |
+    Nous segmentons les possibilités de cette question en trois catégories.
+    ## Téléphone basique
+    Aussi appelé "feature phone", qui sont aujourd'hui au croisement entre le fameux Nokia 3310 et le smartphone, dont l'écran reste petit et les composants bas de gamme
+    > Son empreinte est donnée par la base bilan-GES.
+    ## Smartphone classique
+    Milieu de gamme, qui représente l'écrasante majorité des ventes. Tous les smartphones vendus en 2021 ou presque ont un écran supérieur à 5.5 pouces. 
+    > Son empreinte est donnée par la base bilan-GES.
+    ## Smartphone haut de gamme 
+    La base bilan-GES n'inclut pas de catégories "téléphone haut de gamme" ou "écran > 6 pouces". De plus, l'empreinte d'un iPhone 11 estimée par Apple elle-même est de 72kg de CO2e, dont 79% donc ~57kg juste pour la production. A moins que le périmètre des études ne soit pas le même, mais un périmètre plus important pris par l'entreprise que par l'authorité environnementale est pour le moins étonnant, nous retenons la valeur du fabricant.
+  formule:
+    variations:
+      - si: type = 'PME inférieur à 250 personnes'
+        alors: 1
+      - si: type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: type = 'Grande Entreprise'
+        alors: 1
+      - si: type = 'ETI inférieur à 5000 personnes'
+        alors: 1
+      - si: type = 'Secteur Public ou Association'
+        alors: 1        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numérique . organisation:
+  icônes: 📱
+  formule: impact
+  description: >
+    Les téléphones, et particulièrement les smartphones récents, sont le symbole
+    par excellence de la *high-tech*, qui est réputée consommer beaucoup de
+    ressources.
+    La question est d'autant plus importante qu'ils sont souvent renouvelés régulièrement, par exemple à chaque sortie annuelle du nouvel iPhone.
+    En réalité, notamment en comparaison du nombre d'heures que nous passons sur ces petits objets, leur empreinte climat pourrait être compatible avec un style de vie durable. Illustration : 
+    Un téléphone haut de gamme (iPhone X) c'est < 100kgCO2e. En supposant qu'on achète ce smartphone dernier cri tous les 2 ans, on a < 50kgCO2e/an.
+    Cela représente un demi-pourcent de l'empreinte moyenne d'un français (11 tonnes). Et 2.5% d'une empreinte durable de 2 tonnes / an.
+  note: Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+
+
+
+
+
+numérique . Desktops . impact:
+  question: Nombre d'ordinateurs de bureau ?
+  unité: appareils
+  par défaut: numérique . DESK
+numérique . Desktops:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre de Desktops
+
+
+
+numérique . Ecrans . impact:
+  question: Nombre d'écrans ?
+  unité: appareils
+  par défaut: numérique . ECR
+numérique . Ecrans:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre d'écran
+
+
+
+
+numérique . Imprimantes . impact:
+  question: Nombre d'imprimantes ?
+  unité: appareils
+  par défaut: numérique . IMP
+numérique . Imprimantes:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre Imprimantes
+
+
+
+numérique . Laptops . impact:
+  question: Nombre d'ordinateurs portables ?
+  unité: appareils
+  par défaut: numérique . LAP
+numérique . Laptops:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre Laptops
+
+
+
+numérique . Tablettes . impact:
+  question: Nombre de tablettes ?
+  unité: appareils
+  par défaut: numérique . TABLE
+numérique . Tablettes:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre Tablettes
+
+
+
+numérique . Vidéprojecteurs . impact:
+  question: Nombre de vidéprojecteurs ?
+  unité: appareils
+  par défaut: numérique . VIDEO
+numérique . Vidéprojecteurs:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre Vidéprojecteurs
+
+
+
+numérique . Smartphones . impact:
+  question: Nombre de téléphones portables ?
+  unité: appareils
+  par défaut: numérique . SMART
+numérique . Smartphones:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre de téléphone portable
+
+
+
+
+numérique . Autres équipements . impact:
+  question: Nombre de matériels annexes informatique (souris, clavier, stations d'accueil...) ?
+  unité: appareils
+  par défaut: numérique . AUTRE
+numérique . Autres équipements:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre Autres équipements
+
+
+
+
+numérique . equipement DC . impact:
+  question: Nombre de matériels associés au centre de données ?
+  unité: appareils
+  par défaut: numérique . EDC
+  description: >
+    Nombre de serveurs physiques déployés au sein de votre organisation
+numérique . equipement DC:
+  icônes: 🔊🎬
+  formule: impact
+  unité: kgCO2e
+  note: Nous estimons le nombre equipement DC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numérique . C:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 332 
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: -3111
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 125619
+      - si: organisation . type = 'Grande Entreprise'
+        alors: -177520
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: -177520
+
+
+
+
+
+numérique . S:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: -20
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 147
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: -131
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 106
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 106
+
+
+
+
+
+
+numérique . ND:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 260
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 64
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 0
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 269
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 269
+
+
+
+
+
+
+
+
+numérique . NE:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 45
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 171
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 129
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 149
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 149
+
+
+
+
+
+
+
+
+numérique . NI:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 0
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 1436
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 1525
+      - si: organisation . type = 'Grande Entreprise'
+        alors: -21
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: -21
+
+
+
+
+
+
+
+
+
+
+
+numérique . NL:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 33
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: -288
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 48
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 80
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 80
+
+
+
+numérique . NT:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 0.6
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 776
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 710
+      - si: organisation . type = 'Grande Entreprise'
+        alors: -223
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: -223
+
+
+
+
+
+
+
+numérique . NV:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 0
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 1581
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 13903
+      - si: organisation . type = 'Grande Entreprise'
+        alors: -13133
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: -13133
+
+
+
+
+
+
+
+
+
+numérique . NS:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 80
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 844
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: -228
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 177
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 177
+
+
+
+
+
+numérique . NED:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 0
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 969
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 1338
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 666
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 666
+
+
+
+
+
+
+
+
+numérique . NAU:
+  exposé: oui
+  unité: kgCO₂e
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 0
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: -255
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: -86
+      - si: organisation . type = 'Grande Entreprise'
+        alors: -84
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: -84
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+numérique . internet:
+  icônes: 🌐
+  formule: empreinte horaire * durée journalière * 365
+  unité: kgCO2e
+numérique . internet . consommation horaire:
+  formule: (0.12 + 0.24) / 2
+  unité: kWh/h
+  note: |
+    Ce chiffre a été retenu dans le calculateur MicMac version 2.6. La source est un article de CarbonBrief utilisant des données AIE, et critiquant les calculs du Shift Project.
+    > Taken together, my analysis suggests that streaming a Netflix video in 2019 typically consumed 0.12-0.24kWh of electricity per hour.
+    Voici d'autres sources qui donnent des résultats sensiblement différents : 
+      - 400 g CO2e pour le [Shift Project](https://theshiftproject.org/article/shift-project-vraiment-surestime-empreinte-carbone-video-analyse/) (après correction)
+      - 100 g CO2e pour [Netflix (DIMPACT)](https://www.wired.com/story/netflix-binge-watching-carbon-footprint/)
+      - 36 g CO2e pour l'[IEA](https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines) (même ramené à 4g pour la France si je comprends bien, en raison de l'intensité carbone du mix électrique)
+      - 28 g CO2e pour [Greenspector](https://greenspector.com/fr/impact-video-canal/) (pour l'utilisation de services Canal +)
+    A faire : comment les calculs en source pondèrent-ils les usages (streaming, navigation Web, etc.) ? 
+    Est-ce une estimation de consommation de données par heure d'usage ?
+  références:
+    - https://www.carbonbrief.org/factcheck-what-is-the-carbon-footprint-of-streaming-video-on-netflix
+numérique . internet . empreinte horaire:
+  formule: consommation horaire * intensité électricité
+  unité: kgCO2e/heure
+
+numérique . internet . durée journalière:
+  question: Combien d'heures passez-vous par jour sur internet hors bureau (envoi de mail, surf Web, streaming vidéo, etc.) ?
+  description: Comptez seulement une estimation à la louche de vos heures hors bureau, car ce que vous faites au boulot entre dans la comptabilité de votre entreprise ou organisation.
+  unité: heures
+  par défaut: 2 heures
+  suggestions:
+    zéro: 0
+    modérément: 2
+    je ne décroche pas: 8
+
+numérique . appareil photo . présent:
+  note: On range l'appareil photo dans la catégorie numérique vu la rareté des appareils argentiques aujourd'hui.
+  question: Utilisez-vous un appareil photo ?
+  par défaut: non
+numérique . appareil photo . durée:
+  question: Quel âge a votre appareil photo ?
+  unité: ans
+  par défaut: 4 ans
+numérique . appareil photo:
+  applicable si: présent
+  icônes: 📷
+  formule: 30 / (durée + 1)
+  unité: kgCO2e
+  note: Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+
+numérique . home cinéma . présent:
+  question: Utilisez-vous un home cinéma ?
+  par défaut: non
+numérique . home cinéma . durée:
+  question: Quel âge a votre home cinéma ?
+  unité: ans
+  par défaut: 4 ans
+numérique . home cinéma:
+  icônes: 🔊🎬
+  applicable si: présent
+  formule: 133 / (durée + 1)
+  unité: kgCO2e
+  note: Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+
+numérique . ordinateur portable . présent:
+  question: Utilisez-vous un ordinateur portable ?
+  par défaut: oui
+numérique . ordinateur portable . durée:
+  question: Quel âge a votre ordinateur portable ?
+  unité: ans
+  par défaut: 4 ans
+numérique . ordinateur portable:
+  icônes: 💻
+  note: |
+    Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+  applicable si: présent
+  formule: 156 / (durée + 1)
+  unité: kgCO2e
+
+numérique . ordinateur fixe . présent:
+  question: Utilisez-vous un ordinateur fixe ?
+  par défaut: oui
+numérique . ordinateur fixe . durée:
+  question: Quel âge a votre ordinateur fixe ?
+  unité: ans
+  par défaut: 5 ans
+numérique . ordinateur fixe:
+  icônes: 🖥
+  description: |
+    Un ordinateur fixe (avec une tour détachée de l'écran) ou un écran fixe. 
+    Si vous possédez un écran fixe sans tour, avec un mini-ordinateur séparé ou intégré dans l'écran, répondez oui : l'écran fixe représente une empreinte non négligeable.
+  note: |
+    Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+    Le modèle MicMac parle d'ordinateur fixe haute performance ou d'ordinateur portable. 
+    C'est perturbant pour l'utilisateur, car l'option ordinateur fixe pas haute performance n'est pas proposée. 
+    Nous avons donc confondu fixe et fixe haute performance.
+  applicable si: présent
+  formule: empreinte / (durée + 1)
+  unité: kgCO2e
+numérique . ordinateur fixe . empreinte:
+  formule: 296 + écran
+
+numérique . ordinateur fixe . écran:
+  formule: 248
+  note: Valeur pour un écran de 21 pouces.
+  références:
+    Ecran - 23,8 pouces: https://www.bilans-ges.ademe.fr/fr/basecarbone/donnees-consulter/liste-element?recherche=écran
+
+numérique . téléphone . présent:
+  question: Utilisez-vous un téléphone ?
+  par défaut: oui
+
+numérique . téléphone . type:
+  applicable si: présent
+  icônes: 🤙📱
+  question: Quel téléphone avez-vous ?
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - téléphone basique
+        - smartphone classique
+        - smartphone haut de gamme
+  description: |
+    Un smartphone haut de gamme, c'est par exemple un iPhone récent avec un grand écran (> iPhone X), ou un Samsung Galaxy S ou Note récent.
+    Si vous n'avez pas de téléphone mobile, il y a de grandes chances pour que vous ayez un fixe. Répondez à la question en fonction de la sophistication de votre téléphone fixe, notamment la taille de l'écran. Si vous n'avez ni fixe ni mobile, désolé...
+  par défaut: "'smartphone classique'"
+
+numérique . téléphone:
+  applicable si: présent
+  icônes: 📱
+  formule: impact / (durée + 1)
+  description: >
+    Les téléphones, et particulièrement les smartphones récents, sont le symbole
+    par excellence de la *high-tech*, qui est réputée consommer beaucoup de
+    ressources.
+    La question est d'autant plus importante qu'ils sont souvent renouvelés régulièrement, par exemple à chaque sortie annuelle du nouvel iPhone.
+    En réalité, notamment en comparaison du nombre d'heures que nous passons sur ces petits objets, leur empreinte climat pourrait être compatible avec un style de vie durable. Illustration : 
+    Un téléphone haut de gamme (iPhone X) c'est < 100kgCO2e. En supposant qu'on achète ce smartphone dernier cri tous les 2 ans, on a < 50kgCO2e/an.
+    Cela représente un demi-pourcent de l'empreinte moyenne d'un français (11 tonnes). Et 2.5% d'une empreinte durable de 2 tonnes / an.
+  note: Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+
+numérique . téléphone . durée:
+  question: Quel âge a votre téléphone ?
+  unité: ans
+  par défaut: 2 ans
+
+numérique . téléphone . impact:
+  icônes: 📱✨
+  exposé: oui
+  unité: kgCO₂e
+  références:
+    - https://www.bilans-ges.ademe.fr/fr/basecarbone/donnees-consulter/liste-element?recherche=Smartphone
+    - https://www.bilans-ges.ademe.fr/fr/accueil/documentation-gene/index/page/produits_informatiques__electr
+    - https://www.apple.com/environment/pdf/products/iphone/iPhone_11_PER_sept2019.pdf
+  description: |
+    Nous segmentons les possibilités de cette question en trois catégories.
+    ## Téléphone basique
+    Aussi appelé "feature phone", qui sont aujourd'hui au croisement entre le fameux Nokia 3310 et le smartphone, dont l'écran reste petit et les composants bas de gamme
+    > Son empreinte est donnée par la base bilan-GES.
+    ## Smartphone classique
+    Milieu de gamme, qui représente l'écrasante majorité des ventes. Tous les smartphones vendus en 2021 ou presque ont un écran supérieur à 5.5 pouces. 
+    > Son empreinte est donnée par la base bilan-GES.
+    ## Smartphone haut de gamme 
+    La base bilan-GES n'inclut pas de catégories "téléphone haut de gamme" ou "écran > 6 pouces". De plus, l'empreinte d'un iPhone 11 estimée par Apple elle-même est de 72kg de CO2e, dont 79% donc ~57kg juste pour la production. A moins que le périmètre des études ne soit pas le même, mais un périmètre plus important pris par l'entreprise que par l'authorité environnementale est pour le moins étonnant, nous retenons la valeur du fabricant.
+  formule:
+    variations:
+      - si: type = 'téléphone basique'
+        alors: 16.5
+      - si: type = 'smartphone classique'
+        alors: 39.1
+      - si: type = 'smartphone haut de gamme'
+        alors: 57
+
+numérique . téléphone . type . téléphone basique:
+numérique . téléphone . type . smartphone classique:
+numérique . téléphone . type . smartphone haut de gamme:
+
+numérique . tablette . présent:
+  question: Utilisez-vous une tablette ?
+  par défaut: non
+numérique . tablette . durée:
+  question: Quel âge a votre tablette ?
+  unité: ans
+  par défaut: 4 ans
+numérique . tablette:
+  icônes: ⬛
+  applicable si: présent
+  formule: 63 / (durée + 1)
+  unité: kgCO2e
+  note: Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+
+numérique . TV . présent:
+  question: Utilisez-vous une TV ?
+  par défaut: oui
+numérique . TV . durée:
+  question: Quel âge a votre TV ?
+  unité: ans
+  par défaut: 4 ans
+numérique . TV:
+  icônes: 📺
+  applicable si: présent
+  formule: 371 / (durée + 1)
+  unité: kgCO2e
+  note: |
+    Valeur pour 40-49 pouces de la base [bilan-GES](https://www.bilans-ges.ademe.fr/fr/basecarbone/donnees-consulter/liste-element?recherche=télévision).
+    Nous estimons que l'appareil va durer un an de plus que l'âge renseigné au moment de l'estimation.
+    La taille étant très variable, il serait mieux d'en faire des variations. 
+    Notons aussi : 
+      - la résolution (empreinte d'une 8k ?)
+      - la technologie d'affichage (LED, plasma, etc.)
+numérique . vidéoprojecteur . présent:
+  question: Utilisez-vous un vidéoprojecteur ?
+  par défaut: non
+numérique . vidéoprojecteur . durée:
+  question: Quel âge a votre vidéoprojecteur ?
+  unité: ans
+  par défaut: 4 ans
+numérique . vidéoprojecteur:
+  icônes: 📽️
+  applicable si: présent
+  formule: 94 / (durée + 1)
+  unité: kgCO2e
+
+
+
+
+
+
+
+
+
+numérique . NA:
+  exposé: oui
+  unité: collaborateurs
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 10
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 200
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 5000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 15000
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 15000
+
+
+
+
+
+numérique . DESK:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 50
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 1900
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 16000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 16000
+
+
+
+
+numérique . ECR:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 90
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 3500
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 33000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 33000
+
+
+
+
+numérique . IMP:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 6
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 250
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 13000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 13000
+
+
+
+
+numérique . LAP:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 4
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 55
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 1600
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 28000
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 28000
+
+
+
+
+
+
+
+
+
+numérique . EDC:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 11
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 200
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 4200
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 4200
+
+
+
+
+numérique . AUTRE:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 120
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 1800
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 48000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 48000
+
+
+
+
+
+
+
+numérique . SMART:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 2
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 26
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 800
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 31000
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 31000
+
+
+
+
+
+numérique . VIDEO:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 2
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 19
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 400
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 400
+
+
+
+
+
+
+
+
+
+numérique . TABLE:
+  exposé: oui
+  unité: appareils
+  description: |
+    Nous segmentons les possibilités de cette question en QUATRE catégories.
+  formule:
+    variations:
+      - si: organisation . type = 'TPE inférieur à 10 personnes'
+        alors: 1
+      - si: organisation . type = 'PME inférieur à 250 personnes'
+        alors: 8
+      - si: organisation . type = 'ETI inférieur à 5000 personnes'
+        alors: 129
+      - si: organisation . type = 'Grande Entreprise'
+        alors: 10400
+      - si: organisation . type = 'Secteur Public ou Association'
+        alors: 10400
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+actions: 
+  formule: 
+    somme:
+      - logement . éteindre appareils
+      - transport . boulot . télétravail
+      - numérique . internet . diminuer
+
+
